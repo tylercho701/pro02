@@ -24,28 +24,28 @@
   - 이용 후기는 댓글과 별점 등으로 구성하여 게시하도록 처리
 
 # 개념적 설계
-![유스케이스](/img/usecace.JPG "usecase")
+![유스케이스](/WebContent/img/usecace.JPG "usecase")
 
 # 논리적 설계
-![논리적 설계 ERD](/img/relationchart1.JPG "relation1")
+![논리적 설계 ERD](/WebContent/img/relationchart1.JPG "relation1")
 
 # 물리적 설계
-![물리적 설계 ERD](/img/relationchart2.JPG "relation2")
+![물리적 설계 ERD](/WebContent/img/relationchart2.JPG "relation2")
 
 # 클래스 설계
-![클래스다이어그램](/img/classdiagram.JPG "classdiagram")
+![클래스다이어그램](/WebContent/img/classdiagram.JPG "classdiagram")
 
 # 시퀀스 설계
-![시퀀스1](/img/sequences/sequence1.JPG "sequence1")
-![시퀀스2](/img/sequences/sequence2.JPG "sequence2")
-![시퀀스3](/img/sequences/sequence3.JPG "sequence3")
-![시퀀스4](/img/sequences/sequence4.JPG "sequence4")
-![시퀀스5](/img/sequences/sequence5.JPG "sequence5")
-![시퀀스6](/img/sequences/sequence6.JPG "sequence6")
-![시퀀스7](/img/sequences/sequence7.JPG "sequence7")
-![시퀀스8](/img/sequences/sequence8.JPG "sequence8")
-![시퀀스9](/img/sequences/sequence9.JPG "sequence9")
-![시퀀스10](/img/sequences/sequence10.JPG "sequence10")
+![시퀀스1](/WebContent/img/sequences/sequence1.JPG "sequence1")
+![시퀀스2](/WebContent/img/sequences/sequence2.JPG "sequence2")
+![시퀀스3](/WebContent/img/sequences/sequence3.JPG "sequence3")
+![시퀀스4](/WebContent/img/sequences/sequence4.JPG "sequence4")
+![시퀀스5](/WebContent/img/sequences/sequence5.JPG "sequence5")
+![시퀀스6](/WebContent/img/sequences/sequence6.JPG "sequence6")
+![시퀀스7](/WebContent/img/sequences/sequence7.JPG "sequence7")
+![시퀀스8](/WebContent/img/sequences/sequence8.JPG "sequence8")
+![시퀀스9](/WebContent/img/sequences/sequence9.JPG "sequence9")
+![시퀀스10](/WebContent/img/sequences/sequence10.JPG "sequence10")
 
 # 프로젝트 구성
 ![구성도](/img/build.JPG "구성도")

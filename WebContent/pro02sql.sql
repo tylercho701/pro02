@@ -37,4 +37,44 @@ insert into notice
 insert into notice 
     values (noti_seq.nextval, '테스트 게시글 제목3', '테스트 게시글 내용입니다.3', '관리자', '', default);
 alter table notice add readcnt int default 0;
+
+create table category(catecode varchar2(6),
+                      categroup varchar2(50),
+                      catename varchar2(50),
+                      primary key(catecode));
+insert into category values ('0101', '보관/정리/수납', '리빙박스(플라스틱)');
+insert into category values ('0102', '보관/정리/수납', '정리함');
+insert into category values ('0103', '보관/정리/수납', '옷걸이/헹거');
+insert into category values ('0104', '보관/정리/수납', '공구함/약통');
+insert into category values ('0105', '보관/정리/수납', '서랍장/서류함');
+                      
+insert into category values ('0201', '청소', '휴지통');
+insert into category values ('0202', '청소', '걸레/솔');
+insert into category values ('0203', '청소', '매직블럭');
+insert into category values ('0204', '청소', '롤크리너');
+insert into category values ('0205', '청소', '빗자루/쓰레받이');
+
+insert into category values ('0301', '거실/잡화', '거실화/슬리퍼');
+insert into category values ('0302', '거실/잡화', '발매트');
+insert into category values ('0303', '거실/잡화', '휴지/물티슈');
+insert into category values ('0304', '거실/잡화', '우산/우비');
+insert into category values ('0305', '거실/잡화', '돗자리/생활매트');
+
+insert into category values ('0401', '욕실', '비누받침/양치컵');
+insert into category values ('0402', '욕실', '발매트');
+insert into category values ('0403', '욕실', '변기세척');
+insert into category values ('0404', '욕실', '샤워용품');
+insert into category values ('0405', '욕실', '칫솔/치실');
+
+
+alter table product add category varchar2(6);
+select * from product;
+update product set category = '0102' where pcode = '36080';
+update product set category = '0203' where pcode = '1019714';
+update product set category = '0303' where pcode = '1000865';
+update product set category = '0203' where pcode = '51719';
+update product set category = '0403' where pcode = '1019185';
+update product set category = '0103' where pcode = '1036976';
+
+desc product;
 commit;
