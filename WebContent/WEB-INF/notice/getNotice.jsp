@@ -21,7 +21,7 @@
 <body>
 	<div class="container">
 		<%@ include file="../../hd.jsp" %>
-		<div class="content">
+		<div class="content" style="width:960px; padding-top:30px; margin:30px auto; border-top:3px solid #333; min-height:500px;">
 			<div class="container-fluid">
 				<h2 class="title">공지사항_상세</h2>
 				<table class="table">

@@ -44,7 +44,7 @@
 							</tr>
 							<tr>
 								<td colspan="3">
-									<input type="submit" value="글쓰기">
+									<input type="submit" class="btn btn-primary" value="글쓰기">
 									<a href="${path_insno }/NoticeList.do" class="btn btn-primary">글 목록</a>
 								</td>
 							</tr>
