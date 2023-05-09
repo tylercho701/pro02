@@ -17,11 +17,11 @@
 			<div class="container">
 				<ul class="nav nav-tabs">
 					<c:if test="${empty sid }">
-						<li role="presentation" class="active"><a href="${path_hd }/UserLogin.do">로그인</a></li>
+						<li role="presentation"><a href="${path_hd }/UserLogin.do">로그인</a></li>
 						<li role="presentation"><a href="${path_hd }/UserTerms.do">회원가입</a></li>
 					</c:if>
 					<c:if test="${!empty sid }">
-						<li role="presentation"><a href="${path_hd }/MyPage.do">마이페이지</a></li>
+						<li role="presentation"><a href="${path_hd }/MyPage.do">${sid }님의 마이페이지</a></li>
 						<li role="presentation"><a href="${path_hd }/MyBasket.do">장바구니</a></li>
 						<li role="presentation"><a href="${path_hd }/UserLogout.do">로그아웃</a></li>
 					</c:if>

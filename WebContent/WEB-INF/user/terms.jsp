@@ -17,7 +17,7 @@ padding: 24px; border:2px solid #eee; height:600px; overflow-y:auto; }
 </head>
 <body>
 <%@ include file="../../hd.jsp" %>
-<div class="content" style="padding-top:30px; margin-top:30px; border-top:3px solid #333; min-height:1860px; ">
+<div class="content" style="padding-top:30px; margin-top:30px; border-top:3px solid #333; min-height:1740px; ">
 	<section class="container-fluid">
 		<h2 class="title">회원 약관 동의</h2>
 		<article class="agree_fr">
@@ -906,12 +906,12 @@ padding: 24px; border:2px solid #eee; height:600px; overflow-y:auto; }
 			<div class="form-check" style="text-align:center;">
 				<input type="checkbox" id="ck_item2" name="ck_item2" class="form-check-input">
 				<label for="ck_item2" class="form-check-label">개인정보처리방침에 동의</label><br><br>
-			</div><br><hr><br>
+			</div><hr>
 			<div class="form-check" style="text-align:center;">
 				<label for="ck_item3" onclick="protocol()" class="form-check-label"><strong>전체 약관에 동의</strong></label>
 			</div>
-			<br><hr><br>	
-			<div class="btn-group" style="clear:both; width:960px; margin:20px auto;">
+			<hr>
+			<div class="btn-group" style="clear:both; width:960px; margin:0 580px;">
 				<button type="button" id="in_btn1" class="btn btn-primary">다음 단계</button>
 			</div>
 			<script>

@@ -1,8 +1,6 @@
 package com.daiso.controller;
 
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
@@ -10,49 +8,53 @@ import java.security.spec.InvalidParameterSpecException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.crypto.util.AES256;
+import com.daiso.dto.User1;
 import com.daiso.model.UserDAO;
 
-@WebServlet("/UserLoginPro.do")
-public class UserLoginProCtrl extends HttpServlet {
+@WebServlet("/UserJoinPro.do")
+public class UserJoinProCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		
-		UserDAO dao = new UserDAO();
-		int cnt = 0;
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		User1 user = new User1();
+		String key = "%03x";
+		
+		String pw = request.getParameter("pw");
+		String passwd = "";
+		
 		try {
-			cnt = dao.loginPass(id, pw);
-		} catch (InvalidKeyException | NoSuchAlgorithmException
+			passwd = AES256.encryptAES256(pw, key);
+		} catch (java.security.InvalidKeyException | NoSuchAlgorithmException
 				| InvalidKeySpecException | NoSuchPaddingException
 				| InvalidParameterSpecException | BadPaddingException
-				| IllegalBlockSizeException
-				| InvalidAlgorithmParameterException e) {
-			// TODO Auto-generated catch block
+				| IllegalBlockSizeException e) {
 			e.printStackTrace();
 		}
-
-		HttpSession ses = request.getSession();
-		String msg = "";
-		if(cnt==1){
-			msg = "로그인 성공";
-			ses.setAttribute("sid", id);
-			response.sendRedirect(request.getContextPath());
-		} else if(cnt==9){
-			msg = "아이디 또는 비밀번호가 틀립니다.";
-			response.sendRedirect("UserLogin.do?msg="+msg);	
+		
+		user.setId(request.getParameter("id"));
+		user.setPw(passwd);
+		user.setUname(request.getParameter("name"));
+		user.setUemail(request.getParameter("email"));
+		user.setUtel(request.getParameter("tel"));
+		user.setUaddr(request.getParameter("address1")+" "+request.getParameter("address2"));
+		
+		UserDAO dao = new UserDAO();
+		int cnt = dao.insertUser(user);
+		if(cnt>=1){
+			response.sendRedirect("UserLogin.do");
 		} else {
-			msg = "존재하지 않는 아이디입니다.";
-			response.sendRedirect("UserLogin.do?msg="+msg);
+			response.sendRedirect("UserSignUp.do");
 		}
 	}
 }
