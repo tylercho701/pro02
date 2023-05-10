@@ -3,6 +3,7 @@ package com.daiso.model;
 import java.sql.*;
 import java.util.*;
 
+import com.daiso.dto.Notice;
 import com.daiso.dto.Product;
 
 public class ProductDAO {
@@ -128,5 +129,32 @@ public class ProductDAO {
 			Oracle11.close(rs, pstmt, conn);
 		}
 		return cateMap;
+	}
+	
+	public int insertProduct(Product pro){
+		int cnt = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.PRODUCT_INSERT);
+			pstmt.setString(1, pro.getPcode());
+			pstmt.setString(2, pro.getPname());
+			pstmt.setString(3, pro.getPmeas());
+			pstmt.setInt(4, pro.getPrice());
+			pstmt.setString(5, pro.getPcom());
+			pstmt.setInt(6, pro.getAmount());
+			pstmt.setString(7, pro.getPic1());
+			pstmt.setString(8, pro.getPic2());
+			pstmt.setString(9, pro.getPic3());
+			pstmt.setString(10, pro.getCategory());
+			cnt = pstmt.executeUpdate();
+		} catch (ClassNotFoundException e) { //오라클 JDBC 클래스가 없거나 경로가 다른 경우 발생
+			e.printStackTrace();
+		} catch (SQLException e){	//sql 구문이 틀린 경우 발생
+			e.printStackTrace();			
+		} catch (Exception e){	//알 수 없는 예외인 경우 발생
+			e.printStackTrace();
+		}
+		Oracle11.close(pstmt, conn);
+		return cnt;
 	}
 }

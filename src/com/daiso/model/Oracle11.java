@@ -27,7 +27,7 @@ public class Oracle11 {
 	final static String PRODUCT_SELECT_ALL = "select * from product";
 	final static String PRODUCT_SELECT_CATE_ALL = "select * from product where category = ?";
 	final static String PRODUCT_SELECT_ONE = "select * from product where pcode=?";
-	final static String PRODUCT3 = "";
+	final static String PRODUCT_INSERT = "insert into product values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	final static String CATEGORY_SELECT_ALL = "select * from category where catecode = ?";
 	final static String CATEGORY_SELECT_ONE = "select * from category where catecode = ?";
