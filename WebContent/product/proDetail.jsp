@@ -70,6 +70,16 @@
 								</div>
 							</td>
 						</tr>
+						<tr>
+							<td colspan="2">
+								<img src='${path_pdl }/product/${pro.pic2 }' alt="${pro.pname }"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<img src='${path_pdl }/product/${pro.pic3 }' alt="${pro.pname }"/>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<c:if test="${sid.equals('admin') }">
