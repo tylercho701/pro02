@@ -15,8 +15,9 @@
 </style>
 </head>
 <body>
+<div class="container">
 <%@ include file="../../hd.jsp" %>
-<div class="content" style="width:960px; padding-top:30px; margin:30px auto; border-top:3px solid #333; min-height:500px;">
+<div class="content">
 	<section class="container-fluid">
 		<h2 class="title">회원 정보</h2>
 		<table class="table">
@@ -69,5 +70,6 @@
 	</section>	
 </div>
 <%@ include file="../../ft.jsp" %>
+</div>
 </body>
 </html>

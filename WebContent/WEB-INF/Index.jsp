@@ -19,9 +19,7 @@
 	<div class="container">
 		<%@ include file="../hd.jsp" %>
 		<div class="content">
-			<div class="container-fluid">
-				<h2 class="title" style="margin:70px auto; min-height:100px;">메인페이지</h2>
-			</div>
+			<h2 class="title">메인페이지</h2>
 		</div>
 		<%@ include file="../ft.jsp" %>
 	</div>

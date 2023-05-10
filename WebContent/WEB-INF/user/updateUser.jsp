@@ -9,14 +9,15 @@
 <html>
 <head>
 <%@ include file="../../common.jsp" %>
-<link rel="stylesheet" href="${path_uu }/form_common.css">
 <title>회원 정보 수정</title>
+<link rel="stylesheet" href="${path_uu }/form_common.css">
 <style>
 </style>
 </head>
 <body>
+<div class="container">
 <%@ include file="../../hd.jsp" %>
-<div class="content" style="padding-top:30px; margin-top:30px; border-top:3px solid #333; min-height:500px; ">
+<div class="content">
 	<section class="container-fluid">
 		<h2 class="title">회원 정보 수정</h2>
 		<form name="frm1" id="frm1" action="${path_uu }/UpdateUserPro.do" method="post">
@@ -98,5 +99,6 @@
 	</section>	
 </div>
 <%@ include file="../../ft.jsp" %>
+</div>
 </body>
 </html>

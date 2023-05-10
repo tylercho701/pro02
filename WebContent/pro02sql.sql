@@ -77,4 +77,10 @@ update product set category = '0403' where pcode = '1019185';
 update product set category = '0103' where pcode = '1036976';
 
 desc product;
+desc category;
+
+select * from product where category like '01%';
+select * from product where category like '01'||'%';
+select * from product where category like concat('01', '%');
+select * from category;
 commit;

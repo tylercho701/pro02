@@ -15,8 +15,9 @@
 </style>
 </head>
 <body>
+<div class="container">
 <%@ include file="../../hd.jsp" %>
-<div class="content" style="width:960px; padding-top:30px; margin:30px auto; border-top:3px solid #333; min-height:300px;">
+<div class="content">
 	<div class="container-fluid">
 		<h2 class="title">로그인</h2>
 		<p>${msg }</p>
@@ -48,5 +49,6 @@
 	</div>
 </div>
 <%@ include file="../../ft.jsp" %>
+</div>
 </body>
 </html>

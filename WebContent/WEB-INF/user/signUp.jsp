@@ -15,8 +15,9 @@
 </style>
 </head>
 <body>
+<div class="container">
 <%@ include file="../../hd.jsp" %>
-<div class="content" style="width:960px; padding-top:30px; margin:30px auto; border-top:3px solid #333; min-height:500px;">
+<div class="content">
 	<section class="container-fluid">
 		<h2 class="title">회원가입</h2>
 		<form name="frm1" id="frm1" action="${path_sgnup }/UserJoinPro.do" method="post" onsubmit="return joinCheck(this)">
@@ -144,5 +145,6 @@
 	</section>
 </div>
 <%@ include file="../../ft.jsp" %>
+</div>
 </body>
 </html>

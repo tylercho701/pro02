@@ -10,6 +10,14 @@ public class Product {
 	private	String	pic1;
 	private	String	pic2;
 	private	String	pic3;
+	private String category;
+	
+	public final String getCategory() {
+		return category;
+	}
+	public final void setCategory(String category) {
+		this.category = category;
+	}
 	public String getPcode() {
 		return pcode;
 	}

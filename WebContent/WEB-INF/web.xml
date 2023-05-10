@@ -9,4 +9,21 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>daiso</servlet-name>
+    <servlet-class>com.daiso.controller.Main</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>daiso</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+    <url-pattern>*.css</url-pattern>
+    <url-pattern>*.jpg</url-pattern>
+    <url-pattern>*.png</url-pattern>
+    <url-pattern>*.gif</url-pattern>
+    <url-pattern>*.webp</url-pattern>
+  </servlet-mapping>
 </web-app>

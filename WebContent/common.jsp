@@ -3,7 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+
 <c:set var="path_common" value="${pageContext.request.contextPath }" />
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +34,9 @@
 <!-- 스타일 초기화 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
 
+<!-- Jquery CND -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -40,6 +45,3 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<!-- Jquery CND -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>

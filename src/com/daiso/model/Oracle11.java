@@ -23,6 +23,15 @@ public class Oracle11 {
 	final static String USER_UPDATE1 = "update user1 set pw=?, uname=?, utel=?, uaddr=?, uemail=? where id=?";
 	final static String USER_UPDATE2 = "update user1 set uname=?, utel=?, uaddr=?, uemail=? where id=?";
 	final static String USER_DELETE = "delete from user1 where id=?";
+	
+	final static String PRODUCT_SELECT_ALL = "select * from product";
+	final static String PRODUCT_SELECT_CATE_ALL = "select * from product where category = ?";
+	final static String PRODUCT_SELECT_ONE = "select * from product where pcode=?";
+	final static String PRODUCT3 = "";
+	
+	final static String CATEGORY_SELECT_ALL = "select * from category where catecode = ?";
+	final static String CATEGORY_SELECT_ONE = "select * from category where catecode = ?";
+	final static String CATEGORY3 = "";
 
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
