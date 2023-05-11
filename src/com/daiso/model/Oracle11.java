@@ -30,7 +30,13 @@ public class Oracle11 {
 	final static String PRODUCT_SELECT_ONE = "select * from product where pcode=?";
 	final static String PRODUCT_INSERT = "insert into product values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	final static String PRODUCT_DELETE = "delete from product where pcode = ?";
+	final static String PRODUCT_UPDATE1 = "update product set amount=amount+?, price=? where pcode=?";
+	final static String PRODUCT_UPDATE2 = "update product set pname=?, pstd=?, price=?, pcom=?, amount=?, pic1=?, pic2=?, pic3=?, utburl=?, bookidx=?, cate=? where pcode=?";
 	final static String PRODUCT_UPDATE_STOCK = "update product set price = ?, amount = amount + ? where pcode = ?";
+	
+	final static String PRODUCT_CATE_SELECT1 = "select * from product where cate=?";
+	final static String PRODUCT_CATE_SELECT2 = "select * from product where cate like ?||'%'";
+	final static String PRODUCT_CATE_SELECT3 = "select * from product where cate like concat(?, '%')";
 	
 	final static String CATEGORY_SELECT_ALL = "select * from category where catecode = ?";
 	final static String CATEGORY_SELECT_ONE = "select * from category where catecode = ?";

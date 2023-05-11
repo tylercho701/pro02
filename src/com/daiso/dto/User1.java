@@ -3,6 +3,7 @@ package com.daiso.dto;
 public class User1 {
 	private	String id;
 	private	String pw;
+	private	String hpw;
 	private	String uname;
 	private	String utel;
 	private	String uaddr;
@@ -22,6 +23,12 @@ public class User1 {
 	}
 	public final void setPw(String pw) {
 		this.pw = pw;
+	}
+	public String getHpw() {
+		return hpw;
+	}
+	public void setHpw(String hpw) {
+		this.hpw = hpw;
 	}
 	public final String getUname() {
 		return uname;

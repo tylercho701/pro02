@@ -112,6 +112,37 @@ public class ProductDAO {
 		return proList;
 	}
 	
+	public ArrayList<Product> getAdminCateProductList(String cate){
+		ArrayList<Product> proList = new ArrayList<Product>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.PRODUCT_CATE_SELECT2);
+			pstmt.setString(1, cate);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Product pro = new Product();
+				pro.setPcode(rs.getString("pcode"));
+				pro.setPname(rs.getString("pname"));
+				pro.setPmeas(rs.getString("pmeas"));
+				pro.setPrice(rs.getInt("price"));
+				pro.setPcom(rs.getString("pcom"));
+				pro.setAmount(rs.getInt("amount"));
+				pro.setPic1(rs.getString("pic1"));
+				pro.setPic2(rs.getString("pic2"));
+				pro.setPic3(rs.getString("pic3"));
+				pro.setCategory(rs.getString("category"));
+				proList.add(pro);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, conn);
+		}
+		return proList;
+	}
+	
 	public HashMap<String, String> getCategory(String cate){
 		HashMap<String, String> cateMap = new HashMap<String, String>();
 		
@@ -247,26 +278,22 @@ public class ProductDAO {
 		return cnt;
 	}
 	
-	public Product updateProduct(String pcode){
-		Product pro = new Product();
-		//pcode를 매개변수로 던져서 그에 해당하는 레코드 한 건만 반환받아 pro에 저장
+	public int updateProduct(Product pro) {
+		int cnt =0 ;
 		try {
 			conn = Oracle11.getConnection();
-			pstmt = conn.prepareStatement(Oracle11.PRODUCT_SELECT_ONE);
-			pstmt.setString(1, pcode);
-			rs = pstmt.executeQuery();
-			if(rs.next()){
-				pro.setPcode(rs.getString("pcode"));
-				pro.setPname(rs.getString("pname"));
-				pro.setPmeas(rs.getString("pmeas"));
-				pro.setPrice(rs.getInt("price"));
-				pro.setPcom(rs.getString("pcom"));
-				pro.setAmount(rs.getInt("amount"));
-				pro.setPic1(rs.getString("pic1"));
-				pro.setPic2(rs.getString("pic2"));
-				pro.setPic3(rs.getString("pic3"));
-				pro.setCategory(rs.getString("Category"));
-			}
+			pstmt = conn.prepareStatement(Oracle11.PRODUCT_UPDATE2);
+			pstmt.setString(1, pro.getPname());
+			pstmt.setString(2, pro.getPmeas());
+			pstmt.setInt(3, pro.getPrice());
+			pstmt.setString(4, pro.getPcom());
+			pstmt.setInt(5, pro.getAmount());
+			pstmt.setString(6, pro.getPic1());
+			pstmt.setString(7, pro.getPic2());
+			pstmt.setString(8, pro.getPic3());
+			pstmt.setString(11, pro.getCategory());
+			pstmt.setString(12, pro.getPcode());
+			cnt = pstmt.executeUpdate();
 		} catch (ClassNotFoundException e) { //오라클 JDBC 클래스가 없거나 경로가 다른 경우 발생
 			e.printStackTrace();
 		} catch (SQLException e){	//sql 구문이 틀린 경우 발생
@@ -274,7 +301,7 @@ public class ProductDAO {
 		} catch (Exception e){	//알 수 없는 예외인 경우 발생
 			e.printStackTrace();
 		}
-		Oracle11.close(rs, pstmt, conn);
-		return pro;
+		Oracle11.close(pstmt, conn);
+		return cnt;
 	}
 }

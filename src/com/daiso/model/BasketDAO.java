@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.daiso.dto.Basket;
+import com.daiso.vo.BasketVO;
 
 public class BasketDAO {
 	private Connection conn = null;
@@ -24,7 +25,7 @@ public class BasketDAO {
 				BasketVO bas = new BasketVO();
 				bas.setBnum(rs.getString("bnum"));
 				bas.setId(rs.getString("id"));
-				bas.setName(rs.getString("name"));
+				bas.setUname(rs.getString("name"));
 				bas.setPcode(rs.getString("pcode"));
 				bas.setPname(rs.getString("pname"));
 				bas.setAmount(rs.getInt("amount"));
@@ -36,7 +37,7 @@ public class BasketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			Oracle11.close(rs, pstmt, con);
+			Oracle11.close(rs, pstmt, conn);
 		}
 		return basList;
 	}
@@ -53,7 +54,7 @@ public class BasketDAO {
 				BasketVO bas = new BasketVO();
 				bas.setBnum(rs.getString("bnum"));
 				bas.setId(rs.getString("id"));
-				bas.setName(rs.getString("name"));
+				bas.setUname(rs.getString("name"));
 				bas.setPcode(rs.getString("pcode"));
 				bas.setPname(rs.getString("pname"));
 				bas.setAmount(rs.getInt("amount"));
@@ -65,7 +66,7 @@ public class BasketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			Oracle11.close(rs, pstmt, con);
+			Oracle11.close(rs, pstmt, conn);
 		}
 		return basList;
 	}
@@ -74,8 +75,8 @@ public class BasketDAO {
 	public ArrayList<Basket> getByProductBasketList(String pcode){
 		ArrayList<Basket> basList = new ArrayList<Basket>();
 		try {
-			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.BASKET_SELECT_BYPRODUCT);
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BASKET_SELECT_BYPRODUCT);
 			pstmt.setString(1, pcode);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -91,7 +92,7 @@ public class BasketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			Oracle11.close(rs, pstmt, con);
+			Oracle11.close(rs, pstmt, conn);
 		}
 		return basList;
 	}
@@ -100,8 +101,8 @@ public class BasketDAO {
 	public Basket getBasketDetail(String bnum){
 		Basket bas = new Basket();
 		try {
-			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.BASKET_SELECT_BYBNUM);
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BASKET_SELECT_BYBNUM);
 			pstmt.setString(1, bnum);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -115,7 +116,7 @@ public class BasketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			Oracle11.close(rs, pstmt, con);
+			Oracle11.close(rs, pstmt, conn);
 		}
 		return bas;
 	}
@@ -125,8 +126,8 @@ public class BasketDAO {
 		int cnt = 0;
 		String bnum = createBnum();
 		try {
-			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.INSERT_BASKET);
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BASKET_INSERT);
 			pstmt.setString(1, bnum);
 			pstmt.setString(2, bas.getId());
 			pstmt.setString(3, bas.getPcode());
@@ -137,7 +138,7 @@ public class BasketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			Oracle11.close(pstmt, con);
+			Oracle11.close(pstmt, conn);
 		}
 		return cnt;
 	}
@@ -145,8 +146,8 @@ public class BasketDAO {
 	public String createBnum(){
 		String bnum = "";
 		try {
-			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.BNUM_GENERATOR);
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BASKET_BNUM_GENERATOR);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				bnum = rs.getString("bnum");
@@ -156,7 +157,7 @@ public class BasketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			Oracle11.close(rs, pstmt, con);
+			Oracle11.close(rs, pstmt, conn);
 		}
 		
 		int tmp = Integer.parseInt(bnum) + 1;
@@ -168,8 +169,8 @@ public class BasketDAO {
 	public int deleteBasket(String bnum){
 		int cnt = 0;
 		try {
-			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.DELETE_BASKET);
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BASKET_DELETE);
 			pstmt.setString(1, bnum);
 			cnt = pstmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -177,7 +178,7 @@ public class BasketDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			Oracle11.close(pstmt, con);
+			Oracle11.close(pstmt, conn);
 		}
 		return cnt;
 	}

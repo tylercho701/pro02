@@ -85,6 +85,44 @@
 				<li><a href="ProductList.do?cate=0405">칫솔/치실</a></li>
 			</ul>
 		</div>
+		<%-- <c:if test="${sid=='admin' }"> --%>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="${path1 }/MemberList.do" >
+				회원관리
+				<span class="caret"></span>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				상품/판매 관리
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="${path1 }/AdminCategoryList.do">카테고리 관리</a></li>
+	            <li><a href="${path1 }/AdminProductList.do">상품 관리</a></li>
+	            <li><a href="${path1 }/AdminSalesList.do">판매 관리</a></li>
+	            <li><a href="${path1 }/AdminInventoryList.do">재고 관리</a></li>
+	            <li class="divider"></li>
+	            <li><a href="${path1 }/AdminBasketList.do">장바구니 관리</a></li>
+	           	<li><a href="${path1 }/AdminCarryList.do">배송 관리</a></li>
+	            <li><a href="${path1 }/AdminPayList.do">결제 관리</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				글관리
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="${path1 }/AdminNoticeList.do">공지사항 관리</a></li>
+	            <li><a href="${path1 }/AdminReviewList.do">이용후기 관리</a></li>
+	            <li><a href="${path1 }/AdminQnaList.do">질문 및 답변 관리</a></li>
+	            <li class="divider"></li>
+	            <li><a href="${path1 }/AdminFaqList.do">자주하는 질문 관리</a></li>
+	            <li><a href="${path1 }/AdminDataList.do">자료실 관리</a></li>
+			</ul>
+		</div>
+		<%-- </c:if> --%>
 	</nav>
 </header>
 

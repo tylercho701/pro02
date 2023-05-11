@@ -27,6 +27,43 @@ public class UserDAO {
 	String key = "%03x";
 	String qpw;
 	
+	public ArrayList<User1> getUserList() throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException{
+		ArrayList<User1> userList = new ArrayList<User1>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.USER_SELECT_ALL);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				User1 user = new User1();
+				user.setId(rs.getString("id"));
+				qpw = AES256.decryptAES256(rs.getString("pw"), key);
+				int k = qpw.length();	//암호 글자수 세기
+				String vpw = qpw.substring(0, 3);	//3글자만 암호를 보여주기
+				String hpw = "";
+				for(int i=0;i<k-3;i++){	//나머지는 *로 넣기
+					hpw+="*";
+				}
+				user.setPw(vpw+hpw);
+				user.setHpw(qpw);
+				user.setUname(rs.getString("name"));
+				user.setUtel(rs.getString("tel"));
+				user.setUemail(rs.getString("email"));
+				user.setRegdate(rs.getString("regdate"));
+				user.setUaddr(rs.getString("addr"));
+				user.setPoint(rs.getInt("point"));
+				user.setVisited(rs.getInt("visited"));
+				userList.add(user);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, conn);
+		}
+		return userList; 
+	}
+	
 	public int loginCheck(String id, String pw) throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException{
 		int cnt = 0;
 		try {
@@ -288,5 +325,32 @@ public class UserDAO {
 			Oracle11.close(pstmt, conn);
 		}
 		return cnt;
+	}
+	
+	public User1 getTel(String id) {
+		User1 user = new User1();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.USER_LOGIN);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				user.setId(rs.getString("id"));
+				user.setUname(rs.getString("name"));
+				user.setUtel(rs.getString("tel"));
+				user.setUemail(rs.getString("email"));
+				user.setRegdate(rs.getString("regdate"));
+				user.setUaddr(rs.getString("addr"));
+				user.setPoint(rs.getInt("point"));
+				user.setVisited(rs.getInt("visited"));
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, conn);
+		}
+		return user;
 	}
 }
