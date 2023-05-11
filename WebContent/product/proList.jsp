@@ -31,7 +31,7 @@
 							<img src='${path_plst }/product/${pdt.pic1 }' alt="${pdt.pname }"/>
 						</div>
 						<div class="caption">
-							<h3><strong>${pdt.pname }</strong></h3>
+							<h4><strong>${pdt.pname }</strong></h4>
 							<p class="comment"><strong>상품 설명</strong> :<br>${pdt.pcom }</p>
 							<p><strong>수량</strong> : ${pdt.amount }</p>
 							<p><strong>가격</strong> : <fmt:formatNumber value="${pdt.price }" type="currency" /></p>
@@ -50,9 +50,9 @@
 			</div>
 			</c:if>	
 			<c:if test="${sid.equals('admin') }">
-			<div class="btn-group" style="display:block; float:right; ">
+			<div class="btn-group" style="display:block; float:right;">
 				<a href="${path_plst }/InsertProduct.do" class="btn btn-primary">상품 등록</a>
-			</div>
+			</div><br>
 			</c:if>
 		</div>
 		<%@ include file="../ft.jsp" %>

@@ -78,9 +78,20 @@ update product set category = '0103' where pcode = '1036976';
 
 desc product;
 desc category;
+desc basket;
+
+select * from notice;
+select * from basket;
 
 select * from product where category like '01%';
 select * from product where category like '01'||'%';
 select * from product where category like concat('01', '%');
 select * from category;
+
+update product set pic1 = './images/1020102_main.gif' where pcode = '1020102';
+update product set pic2 = './images/1020102_sub2.jpg' where pcode = '1020102';
+update product set pic3 = './images/1020102_sub3.jpg' where pcode = '1020102';
+
+update product set pic3 = './images/1019185_sub3.jpg' where pcode = '1019185';
+
 commit;

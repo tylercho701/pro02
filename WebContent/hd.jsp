@@ -26,6 +26,7 @@
 			</c:if>
 			<c:if test="${sid == 'admin' }">
 				<li role="presentation"><a href="${path_hd }/Admin.do">관리자페이지</a></li>
+				<li role="presentation"><a href="${path_hd }/AdminProductList.do">관리자 상품관리</a></li>
 				<li role="presentation"><a href="${path_hd }/UserLogout.do">로그아웃</a></li>
 			</c:if>
 			<li role="presentation"><a href="${path_hd }/NoticeList.do">공지사항</a></li>

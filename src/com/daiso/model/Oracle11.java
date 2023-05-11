@@ -23,16 +23,30 @@ public class Oracle11 {
 	final static String USER_UPDATE1 = "update user1 set pw=?, uname=?, utel=?, uaddr=?, uemail=? where id=?";
 	final static String USER_UPDATE2 = "update user1 set uname=?, utel=?, uaddr=?, uemail=? where id=?";
 	final static String USER_DELETE = "delete from user1 where id=?";
+	final static String USER_UPDATE_PW_RESET_TEL = "update user1 set pw=? where id=?";
 	
-	final static String PRODUCT_SELECT_ALL = "select * from product";
+	final static String PRODUCT_SELECT_ALL = "select * from product order by category asc";
 	final static String PRODUCT_SELECT_CATE_ALL = "select * from product where category = ?";
 	final static String PRODUCT_SELECT_ONE = "select * from product where pcode=?";
 	final static String PRODUCT_INSERT = "insert into product values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	final static String PRODUCT_DELETE = "delete from product where pcode = ?";
+	final static String PRODUCT_UPDATE_STOCK = "update product set price = ?, amount = amount + ? where pcode = ?";
 	
 	final static String CATEGORY_SELECT_ALL = "select * from category where catecode = ?";
 	final static String CATEGORY_SELECT_ONE = "select * from category where catecode = ?";
-	final static String CATEGORY3 = "";
+	final static String CATEGORY_SELECT_FIRST = "select distinct substr(catecode,1,2) as ct, categroup from category group by substr(catecode,1,2), categroup order by ct";
+	final static String CATEGORY_SELECT_SECOND = "select catecode, catename from category where catecode like ?||'%' order by catecode";
 
+	final static String BASKET_SELECT_ALL = "select * from basket order by bnum desc";
+	final static String BASKET_SELECT_ALL2 = "select basket.bnum as bnum, basket.id as id, user1.name as name, basket.pcode as pcode, product.pname as pname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.pcode=product.pcode";
+	final static String BASKET_SELECT_BYID = "select * from basket where id=?";
+	final static String BASKET_SELECT_BYID2 = "select basket.bnum as bnum, basket.id as id, user1.name as name, basket.pcode as pcode, product.pname as pname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.pcode=product.pcode and basket.id=?";
+	final static String BASKET_SELECT_BYPRODUCT = "select * from basket where pcode=?";
+	final static String BASKET_SELECT_BYBNUM = "select * from basket where bnum=?";
+	final static String BASKET_INSERT = "insert into basket values (?,?,?,?)";
+	final static String BASKET_DELETE = "delete from basket where bnum=?";
+	final static String BASKET_BNUM_GENERATOR = "select bnum from (select bnum from basket order by bnum desc) where rownum = 1";
+	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
 		Connection conn = DriverManager.getConnection(url, user, pass);

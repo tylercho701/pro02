@@ -1,6 +1,7 @@
 package com.daiso.controller.product;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.daiso.model.ProductDAO;
+import com.daiso.vo.CategoryVO;
+
 @WebServlet("/InsertProduct.do")
 public class InsertProductCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,6 +20,11 @@ public class InsertProductCtrl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String msg = "관리자 권한으로 상품을 등록합니다.";
 		request.setAttribute("msg", msg);
+		
+		ProductDAO dao = new ProductDAO();
+		ArrayList<CategoryVO> cateList = dao.getFirstCategoryList(); 
+		
+		request.setAttribute("cateList", cateList);
 		
 		//디스패치로 view를 생성하여 noticeList.jsp로 요청 받은 notiList를 포워드
 		RequestDispatcher view = request.getRequestDispatcher("/product/proInsert.jsp");

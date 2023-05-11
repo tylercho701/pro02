@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="path_pist" value="${pageContext.request.contextPath }" />
+<c:set var="path_pudt" value="${pageContext.request.contextPath }" />
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8");
@@ -11,7 +11,7 @@
 <head>
 <%@ include file="../common.jsp" %>
 <title>Product Registration</title>
-<link rel="stylesheet" href="${path_pist }/form_common.css">
+<link rel="stylesheet" href="${path_pudt }/form_common.css">
 <style>
 </style>
 </head>
@@ -20,24 +20,16 @@
 		<%@ include file="../hd.jsp" %>
 		<div class="content">
 			<div class="container-fluid">
-				<h2 class="title">새 상품 등록</h2>
-				<form action="${path_pist }/InsertProductPro.do" method="post" enctype="multipart/form-data">
+				<h2 class="title">상품 정보 수정</h2>
+				<form action="${path_pudt }/UpdateProductPro.do" method="post" enctype="multipart/form-data">
 					<table class="table">
 						<tbody>
 							<tr>
-								<th><label for="category">카테고리</label></th>
+								<th>
+									<label for="category">카테고리(${catename }</label>
+								</th>
 								<td>
-									대분류 : 
-									<select id="cate1" name="cate1" class="form-control">
-										<option value="">선택안함</option>
-										<c:forEach items="${cateList }" var="cate1">
-										<option value="${cate1.ct }">${cate1.categroup }</option>
-										</c:forEach>	
-									</select>
-									소분류 : 
-									<select id="cate" name="cate" class="form-control">
-										<option value="">선택안함</option>
-									</select>
+									
 								</td>
 							</tr>
 							<tr>

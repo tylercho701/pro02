@@ -271,4 +271,22 @@ public class UserDAO {
 		}
 		return uList;
 	}
+	
+	public int resetPassword(String id, String passwd) {
+		int cnt = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.USER_UPDATE_PW_RESET_TEL);
+			pstmt.setString(1, passwd);
+			pstmt.setString(2, id);
+			cnt = pstmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(pstmt, conn);
+		}
+		return cnt;
+	}
 }

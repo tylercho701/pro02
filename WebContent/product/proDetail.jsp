@@ -65,7 +65,7 @@
 										<a href="${path_pdl }/ReceiptProduct.do?pcode=${pro.pcode }" class="btn btn-info" role="button">입고</a>
 										<a href="${path_pdl }/UpdateProduct.do?pcode=${pro.pcode }" class="btn btn-warning" role="button">수정</a>
 										<a href="${path_pdl }/DeleteProduct.do?pcode=${pro.pcode }" class="btn btn-danger" role="button">삭제</a>
-										<a href="${path_pdl }/ProductList.do?cate=${pro.category}" class="btn btn-primary" role="button">목록</a>
+										<a href="${path_pdl }/AdminProductList.do"" class="btn btn-primary" role="button">목록</a>
 									</c:if>
 								</div>
 							</td>
