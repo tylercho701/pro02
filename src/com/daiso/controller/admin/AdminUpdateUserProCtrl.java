@@ -1,4 +1,4 @@
-package com.daiso.controller.user;
+package com.daiso.controller.admin;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
@@ -19,7 +19,7 @@ import com.crypto.util.AES256;
 import com.daiso.dto.User1;
 import com.daiso.model.UserDAO;
 
-@WebServlet("/AdminUpdateUserProCtrl")
+@WebServlet("/AdminUpdateUserPro.do")
 public class AdminUpdateUserProCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

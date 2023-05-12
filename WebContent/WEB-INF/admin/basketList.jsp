@@ -19,41 +19,41 @@
 </style>
 </head>
 <body>
-<div class="container">
-<%@ include file="../../hd.jsp" %>
-<div class="content">
-	<div class="container-fluid">
-		<h2>장바구니 정보</h2>
-		<table class="table">
-			<thead>
-				<tr><th>연번</th><th>회원명</th><th>상품명</th><th>가격</th><th>수량</th><th>&nbsp;</th></tr>
-			</thead>
-			<tbody>
-				<c:forEach var="bas" items="${basList }" varStatus="status">
-				<tr>
-					<td>${status.count }</td>
-					<td>${bas.name }(${bas.id })</td>
-					<td>
-						<span title="${bas.pcode }">${bas.pname }</span>
-					</td>
-					<td>${bas.price }</td>
-					<td>${bas.amount }</td>
-					<td>
-						<a href="${path1 }/AdminDeleteBasket.do?bnum=${bas.bnum }" class="btn btn-danger">삭제</a>
-					</td>
-				</tr>
-				</c:forEach>
-				<c:if test="${empty basList }">
-				<tr>
-					<td colspan="4">장바구니 정보가 존재하지 않습니다.</td>
-				</tr>
-				</c:if>	
-			</tbody>
-		</table>
-		<a href="javascript:history.go(-1)" class="btn btn-danger">뒤로 가기</a>
+	<div class="container">
+	<%@ include file="../../hd.jsp" %>
+		<div class="content">
+			<div class="container-fluid">
+				<h2>장바구니 정보</h2>
+				<table class="table">
+					<thead>
+						<tr><th>연번</th><th>회원명</th><th>상품명</th><th>가격</th><th>수량</th><th>&nbsp;</th></tr>
+					</thead>
+					<tbody>
+						<c:forEach var="bas" items="${basList }" varStatus="status">
+						<tr>
+							<td>${status.count }</td>
+							<td>${bas.uname }(${bas.id })</td>
+							<td>
+								<span title="${bas.pcode }">${bas.pname }</span>
+							</td>
+							<td>${bas.price }</td>
+							<td>${bas.amount }</td>
+							<td>
+								<a href="${path_adbk }/AdminDeleteBasket.do?bnum=${bas.bnum }" class="btn btn-danger">삭제</a>
+							</td>
+						</tr>
+						</c:forEach>
+						<c:if test="${empty basList }">
+						<tr>
+							<td colspan="4">장바구니 정보가 존재하지 않습니다.</td>
+						</tr>
+						</c:if>	
+					</tbody>
+				</table>
+				<a href="javascript:history.go(-1)" class="btn btn-danger">뒤로 가기</a>
+			</div>
+		</div>
+	<%@ include file="../../ft.jsp" %>
 	</div>
-</div>
-<%@ include file="../../ft.jsp" %>
-</div>
 </body>
 </html>

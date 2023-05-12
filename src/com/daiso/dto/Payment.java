@@ -1,13 +1,14 @@
 package com.daiso.dto;
 
 public class Payment {
-	private	String	pnum;
-	private	String	id;
-	private	String	onum;
-	private	String	ptype;
-	private	String	ptnum;
+	private	String pnum;
+	private	String id;
+	private	String onum;
+	private	String ptype;
+	private	String ptnum;
 	private	int	pprice;
-	private	String	pdate;
+	private	String pdate;
+	
 	public String getPnum() {
 		return pnum;
 	}

@@ -37,7 +37,6 @@ public class UserLoginProCtrl extends HttpServlet {
 				| InvalidParameterSpecException | BadPaddingException
 				| IllegalBlockSizeException
 				| InvalidAlgorithmParameterException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -2,16 +2,17 @@ package com.daiso.dto;
 
 public class Order1 {
 	private	String	onum;
-	private	String	id;
-	private	String	pcode;
+	private	String id;
+	private	String pcode;
 	private	int	amount;
 	private	int	price;
-	private	String	odate;
-	private	String	dstatus;
-	private	String	dtel;
-	private	String	dname;
-	private	String	daddr;
-	private	String	dcode;
+	private	String odate;
+	private	String dstatus;
+	private	String dtel;
+	private	String dname;
+	private	String daddr;
+	private	String dcode;
+	
 	public String getOnum() {
 		return onum;
 	}

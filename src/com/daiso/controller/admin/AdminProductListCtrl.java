@@ -1,4 +1,4 @@
-package com.daiso.controller.product;
+package com.daiso.controller.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;

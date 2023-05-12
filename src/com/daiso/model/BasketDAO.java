@@ -25,7 +25,7 @@ public class BasketDAO {
 				BasketVO bas = new BasketVO();
 				bas.setBnum(rs.getString("bnum"));
 				bas.setId(rs.getString("id"));
-				bas.setUname(rs.getString("name"));
+				bas.setUname(rs.getString("uname"));
 				bas.setPcode(rs.getString("pcode"));
 				bas.setPname(rs.getString("pname"));
 				bas.setAmount(rs.getInt("amount"));
@@ -54,7 +54,36 @@ public class BasketDAO {
 				BasketVO bas = new BasketVO();
 				bas.setBnum(rs.getString("bnum"));
 				bas.setId(rs.getString("id"));
-				bas.setUname(rs.getString("name"));
+				bas.setUname(rs.getString("uname"));
+				bas.setPcode(rs.getString("pcode"));
+				bas.setPname(rs.getString("pname"));
+				bas.setAmount(rs.getInt("amount"));
+				bas.setPrice(rs.getInt("price"));
+				basList.add(bas);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, conn);
+		}
+		return basList;
+	}
+	
+	// bnum 기준 장바구니 정보 보기
+	public ArrayList<BasketVO> getByBnumBasketList(String bnum){
+		ArrayList<BasketVO> basList = new ArrayList<BasketVO>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.BASKET_SELECT_BYID3);
+			pstmt.setString(1, bnum);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				BasketVO bas = new BasketVO();
+				bas.setBnum(rs.getString("bnum"));
+				bas.setId(rs.getString("id"));
+				bas.setUname(rs.getString("uname"));
 				bas.setPcode(rs.getString("pcode"));
 				bas.setPname(rs.getString("pname"));
 				bas.setAmount(rs.getInt("amount"));

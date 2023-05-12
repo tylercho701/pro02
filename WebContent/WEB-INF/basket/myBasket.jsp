@@ -38,7 +38,7 @@
 					<td>${bas.price }</td>
 					<td>${bas.amount }</td>
 					<td>
-						<a href="${path_mbk }/ByBasketAddSales.do?bnum=${bas.bnum }" class="btn btn-primary">구매</a>
+						<a href="${path_mbk }/ByBasketAddSales.do?bnum=${bas.bnum }&pcode=${bas.pcode }&amount=${bas.amount }&id=${sid }" class="btn btn-primary">구매</a>
 						<a href="${path_mbk }/DeleteBasket.do?bnum=${bas.bnum }" class="btn btn-danger">삭제</a>
 						<a href="javascript:history.go(-1)" class="btn btn-danger">뒤로 가기</a>
 					</td>

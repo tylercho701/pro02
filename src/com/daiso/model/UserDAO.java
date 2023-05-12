@@ -45,11 +45,11 @@ public class UserDAO {
 				}
 				user.setPw(vpw+hpw);
 				user.setHpw(qpw);
-				user.setUname(rs.getString("name"));
-				user.setUtel(rs.getString("tel"));
-				user.setUemail(rs.getString("email"));
+				user.setUname(rs.getString("uname"));
+				user.setUtel(rs.getString("utel"));
+				user.setUemail(rs.getString("uemail"));
 				user.setRegdate(rs.getString("regdate"));
-				user.setUaddr(rs.getString("addr"));
+				user.setUaddr(rs.getString("uaddr"));
 				user.setPoint(rs.getInt("point"));
 				user.setVisited(rs.getInt("visited"));
 				userList.add(user);
@@ -73,7 +73,6 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				qpw = AES256.decryptAES256(rs.getString("pw"), key);
-				System.out.println(qpw);
 				if(pw.equals(qpw)){
 					cnt = 1;
 				} else {
@@ -336,11 +335,11 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				user.setId(rs.getString("id"));
-				user.setUname(rs.getString("name"));
-				user.setUtel(rs.getString("tel"));
-				user.setUemail(rs.getString("email"));
+				user.setUname(rs.getString("uname"));
+				user.setUtel(rs.getString("utel"));
+				user.setUemail(rs.getString("uemail"));
 				user.setRegdate(rs.getString("regdate"));
-				user.setUaddr(rs.getString("addr"));
+				user.setUaddr(rs.getString("uaddr"));
 				user.setPoint(rs.getInt("point"));
 				user.setVisited(rs.getInt("visited"));
 			}

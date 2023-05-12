@@ -15,21 +15,16 @@
 	<nav id="tnb_1" class="navbar navbar-default" style="margin-bottom:0; padding-top:7px; padding-left:5px;">
 		<ul class="nav nav-tabs">
 			<li><a class="navbar-brand" href="${path_hd }">DAISO</a></li>
+			<li role="presentation"><a href="${path_hd }/NoticeList.do">공지사항</a></li>
 			<c:if test="${empty sid }">
 				<li role="presentation"><a href="${path_hd }/UserLogin.do">로그인</a></li>
 				<li role="presentation"><a href="${path_hd }/UserTerms.do">회원가입</a></li>
 			</c:if>
 			<c:if test="${!empty sid }">
 				<li role="presentation"><a href="${path_hd }/MyPage.do">${sid }님의 마이페이지</a></li>
-				<li role="presentation"><a href="${path_hd }/MyBasket.do">장바구니</a></li>
+				<li role="presentation"><a href="${path_hd }/MyBasket.do?id=${sid }">장바구니</a></li>
 				<li role="presentation"><a href="${path_hd }/UserLogout.do">로그아웃</a></li>
 			</c:if>
-			<c:if test="${sid == 'admin' }">
-				<li role="presentation"><a href="${path_hd }/Admin.do">관리자페이지</a></li>
-				<li role="presentation"><a href="${path_hd }/AdminProductList.do">관리자 상품관리</a></li>
-				<li role="presentation"><a href="${path_hd }/UserLogout.do">로그아웃</a></li>
-			</c:if>
-			<li role="presentation"><a href="${path_hd }/NoticeList.do">공지사항</a></li>
 		</ul>
 	</nav>
 	<nav id="tnb_2" class="navbar navbar-default" style="margin-bottom:0; padding-top:7px; padding-left:5px;">
@@ -85,12 +80,11 @@
 				<li><a href="ProductList.do?cate=0405">칫솔/치실</a></li>
 			</ul>
 		</div>
-		<%-- <c:if test="${sid=='admin' }"> --%>
+		<c:if test="${sid=='admin' }">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="${path1 }/MemberList.do" >
+			<a href="${path_hd }/MemberList.do" type="button" class="btn btn-default">
 				회원관리
-				<span class="caret"></span>
-			</button>
+			</a>
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -98,14 +92,14 @@
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<li><a href="${path1 }/AdminCategoryList.do">카테고리 관리</a></li>
-	            <li><a href="${path1 }/AdminProductList.do">상품 관리</a></li>
-	            <li><a href="${path1 }/AdminSalesList.do">판매 관리</a></li>
-	            <li><a href="${path1 }/AdminInventoryList.do">재고 관리</a></li>
+				<li><a href="${path_hd }/AdminCategoryList.do">카테고리 관리</a></li>
+	            <li><a href="${path_hd }/AdminProductList.do">상품 관리</a></li>
+	            <li><a href="${path_hd }/AdminSalesList.do">판매 관리</a></li>
+	            <li><a href="${path_hd }/AdminInventoryList.do">재고 관리</a></li>
 	            <li class="divider"></li>
-	            <li><a href="${path1 }/AdminBasketList.do">장바구니 관리</a></li>
-	           	<li><a href="${path1 }/AdminCarryList.do">배송 관리</a></li>
-	            <li><a href="${path1 }/AdminPayList.do">결제 관리</a></li>
+	            <li><a href="${path_hd }/AdminBasketList.do">장바구니 관리</a></li>
+	           	<li><a href="${path_hd }/AdminCarryList.do">배송 관리</a></li>
+	            <li><a href="${path_hd }/AdminPayList.do">결제 관리</a></li>
 			</ul>
 		</div>
 		<div class="btn-group">
@@ -114,15 +108,15 @@
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<li><a href="${path1 }/AdminNoticeList.do">공지사항 관리</a></li>
-	            <li><a href="${path1 }/AdminReviewList.do">이용후기 관리</a></li>
-	            <li><a href="${path1 }/AdminQnaList.do">질문 및 답변 관리</a></li>
+				<li><a href="${path_hd }/AdminNoticeList.do">공지사항 관리</a></li>
+	            <li><a href="${path_hd }/AdminReviewList.do">이용후기 관리</a></li>
+	            <li><a href="${path_hd }/AdminQnaList.do">질문 및 답변 관리</a></li>
 	            <li class="divider"></li>
-	            <li><a href="${path1 }/AdminFaqList.do">자주하는 질문 관리</a></li>
-	            <li><a href="${path1 }/AdminDataList.do">자료실 관리</a></li>
+	            <li><a href="${path_hd }/AdminFaqList.do">자주하는 질문 관리</a></li>
+	            <li><a href="${path_hd }/AdminDataList.do">자료실 관리</a></li>
 			</ul>
 		</div>
-		<%-- </c:if> --%>
+		</c:if>
 	</nav>
 </header>
 

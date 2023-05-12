@@ -1,4 +1,4 @@
-package com.daiso.controller.user;
+package com.daiso.controller.admin;
 
 import java.io.IOException;
 

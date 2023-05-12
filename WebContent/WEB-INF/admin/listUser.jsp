@@ -33,7 +33,7 @@
 				<tr>
 					<td>${status.count }</td>
 					<td>
-						<a href="${path1 }/UserDetail.do?idx=${user.id }" title="${user.hpw }">${user.id }</a>
+						<a href="${path_adul }/UserDetail.do?idx=${user.id }" title="${user.hpw }">${user.id }</a>
 					</td>
 					<td><span title="${user.uaddr }">${user.uname }</span></td>
 					<td>

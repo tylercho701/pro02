@@ -1,0 +1,45 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 금요일-5월-12-2023   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table NOTICE
+--------------------------------------------------------
+
+  CREATE TABLE "SYSTEM"."NOTICE" 
+   (	"IDX" NUMBER(*,0), 
+	"TITLE" VARCHAR2(100 BYTE), 
+	"CONTENT" VARCHAR2(1000 BYTE), 
+	"AUTHOR" VARCHAR2(20 BYTE), 
+	"FILE1" VARCHAR2(200 BYTE), 
+	"RESDATE" DATE DEFAULT sysdate, 
+	"READCNT" NUMBER(*,0) DEFAULT 0
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+REM INSERTING into SYSTEM.NOTICE
+SET DEFINE OFF;
+Insert into SYSTEM.NOTICE (IDX,TITLE,CONTENT,AUTHOR,FILE1,RESDATE,READCNT) values (1,'테스트 게시글 제목1','테스트 게시글 내용입니다.1','관리자','data/null',to_date('23/05/04','RR/MM/DD'),20);
+Insert into SYSTEM.NOTICE (IDX,TITLE,CONTENT,AUTHOR,FILE1,RESDATE,READCNT) values (2,'테스트 게시글 제목2','테스트 게시글 내용입니다.2','관리자','data/null',to_date('23/05/04','RR/MM/DD'),5);
+Insert into SYSTEM.NOTICE (IDX,TITLE,CONTENT,AUTHOR,FILE1,RESDATE,READCNT) values (3,'테스트 게시글 제목3','테스트 게시글 내용입니다.3','관리자','data/null',to_date('23/05/04','RR/MM/DD'),3);
+Insert into SYSTEM.NOTICE (IDX,TITLE,CONTENT,AUTHOR,FILE1,RESDATE,READCNT) values (21,'테스트 등록 4_수정','테스트 등록 4 수정 내용 입니다.',null,'data/null',to_date('23/05/08','RR/MM/DD'),11);
+Insert into SYSTEM.NOTICE (IDX,TITLE,CONTENT,AUTHOR,FILE1,RESDATE,READCNT) values (41,'test','test','test','data/null',to_date('23/05/09','RR/MM/DD'),2);
+--------------------------------------------------------
+--  DDL for Index SYS_C007212
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYSTEM"."SYS_C007212" ON "SYSTEM"."NOTICE" ("IDX") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table NOTICE
+--------------------------------------------------------
+
+  ALTER TABLE "SYSTEM"."NOTICE" ADD PRIMARY KEY ("IDX")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "SYSTEM"."NOTICE" MODIFY ("TITLE" NOT NULL ENABLE);

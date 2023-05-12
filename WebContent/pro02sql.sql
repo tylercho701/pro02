@@ -79,9 +79,21 @@ update product set category = '0103' where pcode = '1036976';
 desc product;
 desc category;
 desc basket;
+desc order1;
+desc payment;
 
+select * from user1;
 select * from notice;
 select * from basket;
+select * from product;
+select * from payment;
+select * from order1;
+
+delete from payment where pnum = '96547';
+delete from order1 where onum = '10006';
+
+select basket.bnum as bnum, basket.id as id, user1.uname as uname, basket.pcode as pcode, product.pname as pname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.pcode=product.pcode;
+select basket.bnum as bnum, basket.id as id, user1.uname as uname, basket.pcode as pcode, product.pname as pname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.pcode=product.pcode and basket.id='tyler';
 
 select * from product where category like '01%';
 select * from product where category like '01'||'%';
