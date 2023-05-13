@@ -33,6 +33,7 @@ public class Oracle11 {
 	final static String PRODUCT_UPDATE1 = "update product set amount=amount+?, price=? where pcode=?";
 	final static String PRODUCT_UPDATE2 = "update product set pname=?, pstd=?, price=?, pcom=?, amount=?, pic1=?, pic2=?, pic3=?, utburl=?, bookidx=?, cate=? where pcode=?";
 	final static String PRODUCT_UPDATE_STOCK = "update product set price = ?, amount = amount + ? where pcode = ?";
+	final static String PRODUCT_SELECT_SOLDOUT = "select * from product where amount<=0";
 	
 	final static String PRODUCT_CATE_SELECT1 = "select * from product where cate=?";
 	final static String PRODUCT_CATE_SELECT2 = "select * from product where cate like ?||'%'";
@@ -54,12 +55,31 @@ public class Oracle11 {
 	final static String BASKET_INSERT = "insert into basket values (?,?,?,?)";
 	final static String BASKET_DELETE = "delete from basket where bnum=?";
 	final static String BASKET_BNUM_GENERATOR = "select bnum from (select bnum from basket order by bnum desc) where rownum = 1";
+	final static String BASKET_TRANS_BUY = "delete from basket where bnum=?";
 	
 	final static String ONUM_GENERATOR = "select onum from (select * from order1 order by onum desc) where rownum = 1";
 	final static String PNUM_GENERATOR = "select pnum from (select * from payment order by pnum desc) where rownum = 1";
-	final static String ADD_SALES = "insert into order1 values (?,?,?,?,?,default,?,?,?,?,?)";
-	final static String ADD_PAYMENT = "insert into payment values (?,?,?,?,?,?,default)";
-	final static String BUY_TRANS_BASKET = "delete from basket where bnum=?";
+	final static String PAYMENT_ADD = "insert into payment values (?,?,?,?,?,?,default)";
+	final static String PAYMENT_DELETE = "delete from payment where onum=?";
+	
+	final static String PAY_LIST = "select * from payment order by pnum desc";
+	final static String PAY_BYONUM = "select * from payment where onum=? order by pnum desc";
+	
+	final static String ORDER_LIST_BYID = "select * from order1 where id=? order by onum desc";
+	final static String ORDER_BYID = "select * from order1 where id=? and onum=?";
+	
+	final static String SALES_ADD = "insert into order1 values (?,?,?,?,?,default,?,?,?,?,?)";
+	final static String SALES_LIST = "select order1.onum as onum, order1.id as id, order1.pcode as pcode, order1.amount as amount, order1.price as price, order1.odate as odate, order1.dstatus as dstatus, order1.dtel as dtel, order1.dname as dname, order1.daddr as daddr, order1.dcode as dcode, payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from order1, payment where payment.onum=order1.onum order by onum";
+	final static String SALES_INFO = "select order1.onum as onum, order1.id as id, order1.pcode as pcode, order1.amount as amount, order1.price as price, order1.odate as odate, order1.dstatus as dstatus, order1.dtel as dtel, order1.dname as dname, order1.daddr as daddr, order1.dcode as dcode, payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from order1, payment where payment.onum=order1.onum and order1.onum=? order by onum";
+	final static String SALES_LIST_BYID = "select order1.onum as onum, order1.id as id, order1.pcode as pcode, order1.amount as amount, order1.price as price, order1.odate as odate, order1.dstatus as dstatus, order1.dtel as dtel, order1.dname as dname, order1.daddr as daddr, order1.dcode as dcode, payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from order1, payment where payment.onum=order1.onum and order1.id=? order by onum";
+	final static String SALES_PROGRESS_UPDATE = "update order1 set dname=?, dcode=?, dstatus=? where onum=?";
+	final static String SALE_GET_BYID = "select order1.onum as onum, order1.id as id, order1.pcode as pcode, order1.amount as amount, order1.price as price, order1.odate as odate, order1.dstatus as dstatus, order1.dtel as dtel, order1.dname as dname, order1.daddr as daddr, order1.dcode as dcode, payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from order1, payment where payment.onum=order1.onum and order1.id=? and onum=?";
+	final static String SALES_RETURN = "update order1 set dstatus='반품요청' where onum=?";
+	final static String SALES_OK = "update order1 set dstatus='구매완료' where onum=?";
+	
+	final static String BUY_DELETE = "delete from order1 where onum=?";
+	final static String PRODUCT_RETURN = "update product set amount=amount+? where pcode=?";
+	
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
@@ -84,6 +104,7 @@ public class Oracle11 {
 			}
 		}
 	}
+	
 	public static void close(ResultSet rs, PreparedStatement pstmt, Connection conn){
 		if(rs!=null){
 			try {

@@ -52,7 +52,7 @@ public class AddPaymentCtrl extends HttpServlet {
 		
 		if(cnt>=3){
 			System.out.println("트랜잭션 처리 성공");
-			response.sendRedirect("ProductList.do?cate="+category);
+			response.sendRedirect("MysalesList.do?id="+request.getParameter("id"));
 		} else {
 			System.out.println("트랜잭션 처리 실패" + cnt);
 			response.sendRedirect("AddSales.do?bnum="+bnum+"&pcode="+pcode+"&amount="+amount+"&id="+id);

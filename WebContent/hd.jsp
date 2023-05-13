@@ -23,6 +23,7 @@
 			<c:if test="${!empty sid }">
 				<li role="presentation"><a href="${path_hd }/MyPage.do">${sid }님의 마이페이지</a></li>
 				<li role="presentation"><a href="${path_hd }/MyBasket.do?id=${sid }">장바구니</a></li>
+				<li role="presentation"><a href="${path_hd }/MySalesList.do?id=${sid }">구매내역</a></li>
 				<li role="presentation"><a href="${path_hd }/UserLogout.do">로그아웃</a></li>
 			</c:if>
 		</ul>
@@ -94,17 +95,16 @@
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="${path_hd }/AdminCategoryList.do">카테고리 관리</a></li>
 	            <li><a href="${path_hd }/AdminProductList.do">상품 관리</a></li>
-	            <li><a href="${path_hd }/AdminSalesList.do">판매 관리</a></li>
 	            <li><a href="${path_hd }/AdminInventoryList.do">재고 관리</a></li>
 	            <li class="divider"></li>
 	            <li><a href="${path_hd }/AdminBasketList.do">장바구니 관리</a></li>
-	           	<li><a href="${path_hd }/AdminCarryList.do">배송 관리</a></li>
 	            <li><a href="${path_hd }/AdminPayList.do">결제 관리</a></li>
+	            <li><a href="${path_hd }/AdminSalesList.do">판매/배송 관리</a></li>
 			</ul>
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				글관리
+				게시글관리
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">

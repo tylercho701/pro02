@@ -24,7 +24,7 @@
 <div class="content">
 	<section class="container-fluid">
 		<h2 class="title">회원 직권 등록</h2>
-		<form name="frm1" id="frm1" action="${path_adau }/InsertUserPro.do" method="post" onsubmit="return joinCheck(this)">
+		<form name="frm1" id="frm1" action="${path_adau }/AdminInsertUserPro.do" method="post" onsubmit="return joinCheck(this)">
 			<table class="table">
 				<tbody>
 					<tr>

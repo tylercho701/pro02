@@ -56,7 +56,7 @@
 		</table>
 		<c:if test="${!empty sid }">
 		<div class="btn-group">
-			<a href="${path_adul }/InsertUser.do" class="btn btn-primary">회원 등록</a>
+			<a href="${path_adul }/AdminInsertUser.do" class="btn btn-primary">회원 등록</a>
 		</div>
 		</c:if>
 	</div>
