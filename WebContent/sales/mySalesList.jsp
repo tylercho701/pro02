@@ -56,15 +56,15 @@ border:1px solid #e0e0f0; text-align:center; }
 								<span style="display:inline-block;"><fmt:formatDate value="${odate }" pattern="yyyy년 MM월 dd일" /></span>
 							</td>
 							<td>
-								<span style="display:inline-block; width:100px;" title="구매 완료된 제품은 반품이 불가능합니다.">${sale.dstatus }</span> &nbsp; &nbsp; &nbsp;
+								<span style="display:inline-block; width:100px;" title="구매 완료된 제품은 반품이 어렵습니다.">${sale.dstatus }</span> &nbsp; &nbsp; &nbsp;
 								<c:if test="${sale.dstatus=='배송전' }">
 									<a href="${path_mslst }/CancelPay.do?onum=${sale.onum }" class="btn btn-danger">결제 취소</a>
 								</c:if>
 								<c:if test="${sale.dstatus=='배송중' || sale.dstatus=='배송완료'}">
-									<a href="${path_mslst }/ReturnBuy.do?onum=${sale.onum }" class="btn btn-info">반품 요청</a>
+									<span style="display:inline-block; width:160px;" title="배송 코드 : ${sale.dcode }">배송사 : ${sale.dname }</span>&nbsp;&nbsp;
+									<a href="${path_mslst }/ReturnBuy.do?onum=${sale.onum }" class="btn btn-warning">반품 요청</a>
 									<a href="${path_mslst }/OkBuy.do?onum=${sale.onum }" class="btn btn-primary">구매 완료</a>
-									&nbsp; &nbsp;
-									<span style="display:inline-block; width:160px;" title="배송 코드 : ${sale.dcode }">배송사 : ${sale.dname }</span>
+									<a href="${path_mslst }/InsertReview.do?onum=${sale.onum }" class="btn btn-info">구매 후기 작성</a>
 								</c:if>
 							</td>
 						</tr>

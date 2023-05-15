@@ -65,7 +65,7 @@
 										<a href="${path_pdl }/ReceiptProduct.do?pcode=${pro.pcode }" class="btn btn-info" role="button">입고</a>
 										<a href="${path_pdl }/UpdateProduct.do?pcode=${pro.pcode }" class="btn btn-warning" role="button">수정</a>
 										<a href="${path_pdl }/DeleteProduct.do?pcode=${pro.pcode }" class="btn btn-danger" role="button">삭제</a>
-										<a href="${path_pdl }/AdminProductList.do"" class="btn btn-primary" role="button">목록</a>
+										<a href="${path_pdl }/AdminProductList.do" class="btn btn-primary" role="button">목록</a>
 									</c:if>
 								</div>
 							</td>
@@ -82,6 +82,28 @@
 						</tr>
 					</tbody>
 				</table>
+				<c:if test="${!empty reviewLst }">
+				<table class="table">
+					<thead>
+						<tr><th>리뷰번호</th><th>리뷰내용</th><th>리뷰작성일</th><th>후기점수</th></tr>
+					</thead>
+					<tbody>
+					<c:forEach var="rv" items="${reviewLst }" >
+						<tr>
+						<td>${rv.rnum }</td>
+						<td>
+							<a href="${path_pdl }/ReviewDetail.do?rnum=${rv.rnum }" >${rv.rcom }</a>
+						</td>
+						<td>
+							<fmt:parseDate value="${rv.writtendate }" var="regdate" pattern="yyyy-MM-dd HH:mm:ss" />
+							<fmt:formatDate value="${regdate }" pattern="yyyy년 MM월 dd일" />
+						</td>
+						<td>${rv.rpoint }</td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				</c:if>
 				<c:if test="${sid.equals('admin') }">
 				<div class="btn-group" style="display:block; float:right; ">
 					<a href="${path_pdl }/InsertProduct.do" class="btn btn-primary">상품 등록</a>

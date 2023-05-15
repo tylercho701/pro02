@@ -80,6 +80,12 @@ public class Oracle11 {
 	final static String BUY_DELETE = "delete from order1 where onum=?";
 	final static String PRODUCT_RETURN = "update product set amount=amount+? where pcode=?";
 	
+	final static String REVIEW_LIST = "select distinct review.rnum as rnum, review.id as id, review.onum as onum, review.writtendate as writtendate, review.rcom as rcom, order1.pcode as pcode, order1.odate as odate, order1.dstatus as dstatus from review, order1 where review.id = order1.id and order1.pcode = ? order by review.rnum desc";
+	final static String REVIEW_SELECT_BY_PCODE = "select * from review where pcode = ?";
+	final static String REVIEW_DETAIL = "select review.rnum as rnum, review.id as id, review.onum as onum, review.writtendate as writtendate, review.rcom as rcom, order1.pcode as pcode, product.pname as pname, review.rpoint as rpoint, order1.odate as odate, order1.dstatus as dstatus from review, order1, product where review.id = order1.id and dstatus = '구매완료' and order1.pcode = product.pcode and review.rnum = ?";
+	final static String REVIEW_FIND_REVIEWER = "select order1.onum as onum, order1.id as id, order1.pcode as pcode, product.pname as pname from order1, product where order1.pcode = product.pcode and order1.onum = ?";
+	final static String REVIEW_INSERT = "insert into review values (?,?,?,default,?,?)";
+	final static String RNUM_GENERATOR = "select rnum from (select * from review order by rnum desc) where rownum = 1";
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

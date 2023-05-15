@@ -48,4 +48,4 @@
 ![시퀀스10](/WebContent/img/sequences/sequence10.JPG "sequence10")
 
 # 프로젝트 구성
-![구성도](/img/build.JPG "구성도")
+![구성도](/WebContent/img/build.JPG "구성도")

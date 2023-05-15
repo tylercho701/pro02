@@ -27,10 +27,10 @@ public class AdminCancelCtrl extends HttpServlet {
 		
 		if(cnt>=2){
 			System.out.println("주문 취소 성공");
-			response.sendRedirect("Survey.do");
+			response.sendRedirect("AdminSalesList.do");
 		} else {
 			System.out.println("주문 취소 실패");
-			response.sendRedirect("SurveyLoad.do?onum="+onum);
+			response.sendRedirect("AdminSalesList.do");
 		}
 	}
 }
