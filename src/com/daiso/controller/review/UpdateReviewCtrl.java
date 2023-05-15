@@ -12,23 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 import com.daiso.model.ReviewDAO;
 import com.daiso.vo.ReviewVO;
 
-@WebServlet("/ReviewDetail.do")
-public class ReviewDetailCtrl extends HttpServlet {
+@WebServlet("/UpdateReview.do")
+public class UpdateReviewCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String rnum = request.getParameter("rnum");
-
-		ReviewDAO rdao = new ReviewDAO();
+		String msg = "구매 후기를 수정합니다.";
+		
 		ReviewVO review = new ReviewVO();
+		ReviewDAO rdao = new ReviewDAO();
+		
 		review = rdao.getReviewDtl(rnum);
 		
-		String pcode = request.getParameter("pcode");
-		
+		request.setAttribute("msg", msg);
 		request.setAttribute("review", review);
-		request.setAttribute("pcode", pcode);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/review/reviewDetail.jsp");
+		//디스패치로 view를 생성하여 noticeList.jsp로 요청 받은 notiList를 포워드
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/review/updateReview.jsp");
 		view.forward(request, response);
 	}
 }

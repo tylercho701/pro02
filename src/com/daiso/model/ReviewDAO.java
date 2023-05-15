@@ -30,6 +30,7 @@ public class ReviewDAO {
 				review.setWrittendate(rs.getString("writtendate"));
 				review.setRcom(rs.getString("rcom"));
 				review.setPcode(rs.getString("pcode"));
+				review.setRpoint(rs.getInt("rpoint"));
 				review.setOdate(rs.getString("odate"));
 				review.setDstatus(rs.getString("dstatus"));
 				reviewLst.add(review);
@@ -124,6 +125,26 @@ public class ReviewDAO {
 			pstmt.setString(3, review.getOnum());
 			pstmt.setString(4, review.getRcom());
 			pstmt.setInt(5, review.getRpoint());
+			cnt = pstmt.executeUpdate();			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(pstmt, conn);
+		}
+		
+		return cnt;
+	}
+	
+	public int updateReview(Review review){
+		int cnt = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.REVIEW_UPDATE);
+			pstmt.setString(1, review.getRcom());
+			pstmt.setInt(2, review.getRpoint());
+			pstmt.setString(3, review.getRnum());
 			cnt = pstmt.executeUpdate();			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

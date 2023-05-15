@@ -40,7 +40,7 @@
 				<tr>
 					<th>리뷰내용</th>
 					<td>
-						<textarea>${review.rcom }</textarea>
+						<textarea readonly>${review.rcom }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +64,7 @@
 							<a href="${path_rd }/UpdateReview.do?rnum=${review.rnum}" class="btn btn-info">게시글 수정</a>
 							<a href="${path_rd }/DeleteReview.do?rnum=${review.rnum}" class="btn btn-danger">게시글 삭제</a>
 						</c:if>
-						<a href="javascript:history.go(-1)" class="btn btn-warning">뒤로가기</a>						
+						<a href="${path_rd }/ProductDetail.do?pcode=${pcode }" class="btn btn-warning">뒤로가기</a>						
 					</td>
 				</tr>
 			</tbody>

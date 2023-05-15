@@ -92,7 +92,7 @@
 						<tr>
 						<td>${rv.rnum }</td>
 						<td>
-							<a href="${path_pdl }/ReviewDetail.do?rnum=${rv.rnum }" >${rv.rcom }</a>
+							<a href="${path_pdl }/ReviewDetail.do?rnum=${rv.rnum }&pcode=${rv.pcode }" >${rv.rcom }</a>
 						</td>
 						<td>
 							<fmt:parseDate value="${rv.writtendate }" var="regdate" pattern="yyyy-MM-dd HH:mm:ss" />
