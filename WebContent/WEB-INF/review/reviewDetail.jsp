@@ -23,7 +23,7 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<th>후기번호</th>
+					<th>리뷰번호</th>
 					<td>
 						${review.rnum }
 						<input type="hidden" value="${review.id }" id="id" name="id">	
@@ -57,14 +57,14 @@
 				<tr>
 					<td colspan="2">
 						<c:if test="${review.id == sid }">
-							<a href="${path_rd }/UpdateReview.do?rnum=${review.rnum}" class="btn btn-info">게시글 수정</a>
-							<a href="${path_rd }/DeleteReview.do?rnum=${review.rnum}" class="btn btn-danger">게시글 삭제</a>
+							<a href="${path_rd }/UpdateReview.do?rnum=${review.rnum}" class="btn btn-info">구매 후기 수정</a>
+							<a href="${path_rd }/DeleteReview.do?rnum=${review.rnum}" class="btn btn-danger">구매 후기 삭제</a>
 						</c:if>
 						<c:if test="${sid == 'admin' }">
-							<a href="${path_rd }/UpdateReview.do?rnum=${review.rnum}" class="btn btn-info">게시글 수정</a>
-							<a href="${path_rd }/DeleteReview.do?rnum=${review.rnum}" class="btn btn-danger">게시글 삭제</a>
+							<a href="${path_rd }/UpdateReview.do?rnum=${review.rnum}" class="btn btn-info">구매 후기 수정</a>
+							<a href="${path_rd }/DeleteReview.do?rnum=${review.rnum}" class="btn btn-danger">구매 후기 삭제</a>
 						</c:if>
-						<a href="${path_rd }/ProductDetail.do?pcode=${pcode }" class="btn btn-warning">뒤로가기</a>						
+						<a href="javascript:history.go(-1)" class="btn btn-warning">뒤로가기</a>						
 					</td>
 				</tr>
 			</tbody>

@@ -109,20 +109,16 @@ update product set pic3 = './images/1019185_sub3.jpg' where pcode = '1019185';
 commit;
 
 alter table order1 drop constraint FK_ORPC;
-
+             
 select * from basket;
 select * from category;
 select * from notice;
 select * from order1;
-update order1 set dstatus='배송완료' where onum='10008';
 select * from payment;
 select * from product;
 select * from review;
-select * from user1
+select * from user1;
 
-select review.rnum as rnum, review.id as id, review.onum as onum, review.writtendate as writtendate, review.rcom as rcom, order1.pcode as pcode, order1.odate as odate, order1.dstatus as dstatus from review, order1 where review.id = order1.id and order1.pcode = '1000865' order by review.rnum desc;
-select distinct review.rnum as rnum, review.id as id, review.onum as onum, review.writtendate as writtendate, review.rcom as rcom, order1.pcode as pcode, order1.odate as odate, order1.dstatus as dstatus from review, order1 where review.id = order1.id and order1.pcode = '1000865' order by review.rnum desc;
-select rnum from (select * from review order by rnum desc) where rownum = 1;
 desc basket;
 desc category;
 desc notice;

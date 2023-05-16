@@ -31,8 +31,33 @@ public class ReviewDAO {
 				review.setRcom(rs.getString("rcom"));
 				review.setPcode(rs.getString("pcode"));
 				review.setRpoint(rs.getInt("rpoint"));
-				review.setOdate(rs.getString("odate"));
-				review.setDstatus(rs.getString("dstatus"));
+				reviewLst.add(review);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, conn);
+		}
+		return reviewLst;
+	}
+	
+	public ArrayList<ReviewVO> getReviewListAll(){
+		ArrayList<ReviewVO> reviewLst = new ArrayList<ReviewVO>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.REVIEW_LIST_ALL);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				ReviewVO review = new ReviewVO();
+				review.setRnum(rs.getString("rnum"));
+				review.setId(rs.getString("id"));
+				review.setOnum(rs.getString("onum"));
+				review.setWrittendate(rs.getString("writtendate"));
+				review.setRcom(rs.getString("rcom"));
+				review.setRpoint(rs.getInt("rpoint"));
+				review.setPcode(rs.getString("pcode"));
+				review.setPname(rs.getString("pname"));
 				reviewLst.add(review);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -145,6 +170,24 @@ public class ReviewDAO {
 			pstmt.setString(1, review.getRcom());
 			pstmt.setInt(2, review.getRpoint());
 			pstmt.setString(3, review.getRnum());
+			cnt = pstmt.executeUpdate();			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(pstmt, conn);
+		}
+		
+		return cnt;
+	}
+	
+	public int deleteReview(String rnum){
+		int cnt = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.REVIEW_DELETE);
+			pstmt.setString(1, rnum);
 			cnt = pstmt.executeUpdate();			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

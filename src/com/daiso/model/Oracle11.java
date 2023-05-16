@@ -80,12 +80,14 @@ public class Oracle11 {
 	final static String BUY_DELETE = "delete from order1 where onum=?";
 	final static String PRODUCT_RETURN = "update product set amount=amount+? where pcode=?";
 	
-	final static String REVIEW_LIST = "select r.rnum, r.id, r.onum, r.writtendate, r.rcom, r.rpoint, o.pcode, o.odate, o.dstatus from review r inner join order1 o on r.id = o.id where o.pcode = ? order by r.rnum desc";
+	final static String REVIEW_LIST = "select distinct r.rnum, r.id, r.onum, r.writtendate, r.rcom, r.rpoint, o.pcode from review r inner join order1 o on r.id = o.id where o.pcode = ? order by r.rnum desc";
+	final static String REVIEW_LIST_ALL = "select distinct r.rnum, r.id, r.onum, r.writtendate, r.rcom, r.rpoint, o.pcode, p.pname from review r inner join order1 o on r.id = o.id inner join product p on p.pcode = o.pcode order by r.rnum desc";
 	final static String REVIEW_SELECT_BY_PCODE = "select * from review where pcode = ?";
 	final static String REVIEW_DETAIL = "select r.rnum, r.id, r.onum, r.writtendate, r.rcom, o.pcode, p.pname, r.rpoint, o.odate, o.dstatus from review r inner join order1 o on r.onum = o.onum inner join product p on o.pcode = p.pcode where r.rnum = ?";
 	final static String REVIEW_FIND_REVIEWER = "select order1.onum as onum, order1.id as id, order1.pcode as pcode, product.pname as pname from order1, product where order1.pcode = product.pcode and order1.onum = ?";
 	final static String REVIEW_UPDATE = "update review set writtendate = default, rcom = ?, rpoint = ? where rnum = ?";
 	final static String REVIEW_INSERT = "insert into review values (?,?,?,default,?,?)";
+	final static String REVIEW_DELETE = "delete from review where rnum = ?";
 	final static String RNUM_GENERATOR = "select rnum from (select * from review order by rnum desc) where rownum = 1";
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
