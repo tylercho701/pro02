@@ -20,10 +20,16 @@
 				<li role="presentation"><a href="${path_hd }/UserLogin.do">로그인</a></li>
 				<li role="presentation"><a href="${path_hd }/UserTerms.do">회원가입</a></li>
 			</c:if>
-			<c:if test="${!empty sid }">
+			<c:if test="${!empty sid && sid != 'admin' }">
 				<li role="presentation"><a href="${path_hd }/MyPage.do">${sid }님의 마이페이지</a></li>
 				<li role="presentation"><a href="${path_hd }/MyBasket.do?id=${sid }">장바구니</a></li>
 				<li role="presentation"><a href="${path_hd }/MySalesList.do?id=${sid }">구매내역</a></li>
+				<li role="presentation"><a href="${path_hd }/QnaList.do">질문하기</a></li>
+				<li role="presentation"><a href="${path_hd }/FaqList.do">FAQ</a></li>
+				<li role="presentation"><a href="${path_hd }/UserLogout.do">로그아웃</a></li>
+			</c:if>
+			<c:if test="${sid == 'admin' }">
+				<li role="presentation"><a href="${path_hd }/AdminPage.do">관리자</a></li>
 				<li role="presentation"><a href="${path_hd }/UserLogout.do">로그아웃</a></li>
 			</c:if>
 		</ul>
@@ -81,7 +87,7 @@
 				<li><a href="ProductList.do?cate=0405">칫솔/치실</a></li>
 			</ul>
 		</div>
-		<c:if test="${sid=='admin' }">
+		<%-- <c:if test="${sid=='admin' }">
 		<div class="btn-group">
 			<a href="${path_hd }/MemberList.do" type="button" class="btn btn-default">
 				회원관리
@@ -116,7 +122,7 @@
 	            <li><a href="${path_hd }/AdminDataList.do">자료실 관리</a></li>
 			</ul>
 		</div>
-		</c:if>
+		</c:if> --%>
 	</nav>
 </header>
 

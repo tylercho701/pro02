@@ -40,10 +40,14 @@ public class Oracle11 {
 	final static String PRODUCT_CATE_SELECT3 = "select * from product where cate like concat(?, '%')";
 	final static String PRODUCT_SALES = "update product set amount=amount-? where pcode=?";
 	
-	final static String CATEGORY_SELECT_ALL = "select * from category where catecode = ?";
+	final static String CATEGORY_SELECT_ALL = "select * from category order by catecode asc";
 	final static String CATEGORY_SELECT_ONE = "select * from category where catecode = ?";
+	final static String CATEGORY_SELECT_ONE_BYGRUOPNAME = "select * from category where categroup = ?";
 	final static String CATEGORY_SELECT_FIRST = "select distinct substr(catecode,1,2) as ct, categroup from category group by substr(catecode,1,2), categroup order by ct";
 	final static String CATEGORY_SELECT_SECOND = "select catecode, catename from category where catecode like ?||'%' order by catecode";
+	final static String CATECODE_GENERATOR = "select catecode from (select * from category where catecode like ? order by catecode desc) where rownum = 1";
+	final static String CATEGORY_INSERT = "insert into category values(?, ?, ?)";
+	final static String CATEGORY_DELETE = "delete from category where catecode = ?";
 
 	final static String BASKET_SELECT_ALL = "select * from basket order by bnum desc";
 	final static String BASKET_SELECT_ALL2 = "select basket.bnum as bnum, basket.id as id, user1.uname as uname, basket.pcode as pcode, product.pname as pname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.pcode=product.pcode";
@@ -89,6 +93,26 @@ public class Oracle11 {
 	final static String REVIEW_INSERT = "insert into review values (?,?,?,default,?,?)";
 	final static String REVIEW_DELETE = "delete from review where rnum = ?";
 	final static String RNUM_GENERATOR = "select rnum from (select * from review order by rnum desc) where rownum = 1";
+	
+	final static String QNO_GENERATOR = "select qno from (select * from qna order by qno desc) where rownum = 1";
+	final static String ADD_QNA = "insert into qna values (?,?,?,?,sysdate,1,?,0)";
+	final static String ADD_REPLY = "insert into qna values (?,?,?,?,sysdate,2,?,0)";
+	final static String QNA_LIST = "select * from qna order by parno desc, qno asc";
+	final static String QNA_SELECT = "select * from qna where parno=? order by qno asc";
+	final static String QNA_SELECT_ONE = "select * from qna where qno=?";
+	final static String REPLY_LIST = "select * from qna where parno=? and lev=2 order by qno asc";
+	final static String REPLY_SELECT = "select * from qna where parno=? and lev=2 order by qno asc";
+	final static String REPLY_SELECT_ONE = "select * from qna where lev=2 and qno=? order by qno asc";
+	final static String UPDATE_QNA = "update qna set title=?, content=? where qno=?";
+	final static String DELETE_QNA = "delete from qna where parno=?";
+	final static String DELETE_REPLY = "delete from qna where qno=?";
+	
+	final static String FNO_GENERATOR = "select fno from (select * from faq order by fno desc) where rownum = 1";
+	final static String ADD_FAQ = "insert into faq values (?,?,?,sysdate)";
+	final static String UPDATE_FAQ = "update faq set fquestion=?, fanswer=? where fno=?";
+	final static String DELETE_FAQ = "delete from faq where fno=?";
+	final static String GET_FAQ = "select * from faq order by fno asc";
+	final static String FAQ_SELECT_ONE = "select * from faq where fno=?"; 
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

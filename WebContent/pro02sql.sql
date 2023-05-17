@@ -106,9 +106,24 @@ update product set pic3 = './images/1020102_sub3.jpg' where pcode = '1020102';
 
 update product set pic3 = './images/1019185_sub3.jpg' where pcode = '1019185';
 
+create table qna(qno varchar2(8) primary key,
+title varchar2(100), content varchar2(1000), author varchar2(20), 
+resdate date default sysdate, lev number(11), parno varchar2(8), 
+visited number default 0  
+);
+
+create table faq(fno varchar2(8) primary key,
+fquestion varchar2(500), fanswer varchar2(500), 
+resdate date default sysdate
+);
+
+
+
 commit;
 
 alter table order1 drop constraint FK_ORPC;
+
+update category set categroup = '보관/정리/수납' where catecode = '0106';
              
 select * from basket;
 select * from category;
