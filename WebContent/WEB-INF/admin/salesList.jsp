@@ -13,7 +13,7 @@
 <html>
 <head>
 <%@ include file="../../common.jsp" %>
-<title>Sales List</title>
+<title>Status about Delivery</title>
 <link rel="stylesheet" href="${path_slst }/form_common.css">
 <style>
 </style>
@@ -23,7 +23,7 @@
 	<%@ include file="../../hd.jsp" %>
 		<div class="content">
 			<div class="container-fluid">
-				<h2>판매목록</h2>
+				<h2>배송현황</h2>
 				<hr>
 				<fmt:setLocale value="ko_kr" />
 				<table class="table">

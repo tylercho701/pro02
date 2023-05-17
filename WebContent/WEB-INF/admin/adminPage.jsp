@@ -42,9 +42,16 @@
 					<tr>
 						<td><a href=""></a></td>
 						<td><a href="${path_ap }/AdminInventoryList.do">재고 관리</a></td>
-						<td><a href="${path_ap }/AdminSalesList.do">판매/배송 관리</a></td>
+						<td><a href="${path_ap }/AdminSalesList.do">배송 관리</a></td>
 						<td><a href=""></a></td>
 						<td><a href="${path_ap }/FaqList.do">자주하는 질문 관리</a></td>
+					</tr>
+					<tr>
+						<td><a href=""></a></td>
+						<td><a href=""></a></td>
+						<td><a href="${path_ap }/AdminPurchasedList.do">판매 관리</a></td>
+						<td><a href=""></a></td>
+						<td><a href=""></a></td>
 					</tr>
 				</tbody>
 			</table>

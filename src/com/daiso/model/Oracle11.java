@@ -80,6 +80,7 @@ public class Oracle11 {
 	final static String SALE_GET_BYID = "select order1.onum as onum, order1.id as id, order1.pcode as pcode, order1.amount as amount, order1.price as price, order1.odate as odate, order1.dstatus as dstatus, order1.dtel as dtel, order1.dname as dname, order1.daddr as daddr, order1.dcode as dcode, payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from order1, payment where payment.onum=order1.onum and order1.id=? and onum=?";
 	final static String SALES_RETURN = "update order1 set dstatus='반품요청' where onum=?";
 	final static String SALES_OK = "update order1 set dstatus='구매완료' where onum=?";
+	final static String NOT_SALES_PRODUCT = "select * from product where pcode not in (select pcode from order1)";
 	
 	final static String BUY_DELETE = "delete from order1 where onum=?";
 	final static String PRODUCT_RETURN = "update product set amount=amount+? where pcode=?";

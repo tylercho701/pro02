@@ -1,8 +1,7 @@
-package com.daiso.controller.product;
+package com.daiso.controller.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,29 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.daiso.dto.Product;
 import com.daiso.model.ProductDAO;
 
-@WebServlet("/SoldoutProductList.do")
-public class SoldoutProductListCtrl extends HttpServlet {
+@WebServlet("/AdminInventoryList.do")
+public class AdminInventoryListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cate = request.getParameter("cate");
 		ProductDAO dao = new ProductDAO();
 		ArrayList<Product> proList = new ArrayList<Product>();
-		HashMap<String, String> cateMap = new HashMap<String, String>();
-		if(cate==null){
-			proList = dao.getSoldoutProductList();
-			cate = "0101";
-			cateMap.put("catename", "품절");
-		} else {
-			proList = dao.getCateProductList(cate);
-			cateMap = dao.getCategory(cate);
-		}
-		
+		proList = dao.getProductList();
+
 		request.setAttribute("proList", proList);
-		request.setAttribute("cateMap", cateMap);
 		
 		//디스패치로 view를 생성하여 proList.jsp로 요청 받은 proList를 포워드
-		RequestDispatcher view = request.getRequestDispatcher("/product/proList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/inventoryList.jsp");
 		view.forward(request, response);
 	}
 }

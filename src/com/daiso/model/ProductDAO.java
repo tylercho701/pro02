@@ -497,4 +497,34 @@ public class ProductDAO {
 		return cnt;
 	}
 	
+	public ArrayList<Product> notSalesList() {
+		ArrayList<Product> nList = new ArrayList<Product>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.NOT_SALES_PRODUCT);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Product pro = new Product();
+				pro.setPcode(rs.getString("pcode"));
+				pro.setPname(rs.getString("pname"));
+				pro.setPmeas(rs.getString("pmeas"));
+				pro.setPrice(rs.getInt("price"));
+				pro.setPcom(rs.getString("pcom"));
+				pro.setAmount(rs.getInt("amount"));
+				pro.setPic1(rs.getString("pic1"));
+				pro.setPic2(rs.getString("pic2"));
+				pro.setPic3(rs.getString("pic3"));
+				pro.setCategory(rs.getString("category"));
+				nList.add(pro);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, conn);
+		}
+		return nList;
+	}
+	
 }
